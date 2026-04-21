@@ -4,43 +4,86 @@ import javax.swing.JTextField;
 
 public class App {
     private pilha p = null;  //atributo da classe
-
+    private int totalCadastrado;
+  
     public App() {
-        System.out.println("Pilha inicial de Alunos:");
+        int opcao;
         System.out.println("Insira a quantidade de alunos a serem registrados:");
         int num = Integer.parseInt(JOptionPane.showInputDialog(null, "Insira a quantidade de alunos a serem registrados:"));
         p = new pilha(num);
 
-        while (!p.isFull()) {
-            JTextField nome = new JTextField();
-            JTextField notaM = new JTextField();
-            JTextField notaP = new JTextField();
-            JTextField notaG = new JTextField();
-            JTextField notaH = new JTextField();
-            JTextField notaC = new JTextField();
-            p.push(new Alunos(nome.getText(),
-                            Float.parseFloat(notaM.getText()),
-                            Float.parseFloat(notaP.getText()),
-                            Float.parseFloat(notaG.getText()),
-                            Float.parseFloat(notaH.getText()),
-                            Float.parseFloat(notaC.getText())
-                        ));
-        }
+        do {
+            String menu = "--- Nota dos Alunos ---\n"
+                    + "Cadastrados: " + totalCadastrado + "/"+ num+ "\n"
+                    + "1. Acrescentar novo Aluno\n"
+                    + "2. Exibir Alunos\n"
+                    + "3. Sair";
 
-        p.print();
- 
+            String leitura = JOptionPane.showInputDialog(null, menu, "Menu", JOptionPane.QUESTION_MESSAGE);
+            if (leitura == null) break; 
+            opcao = Integer.parseInt(leitura);
+
+
+            switch (opcao) {
+                case 1:
+                    adicionarAluno(num);
+                    break;
+                case 2:
+                    exibirAlunos();
+                    break;
+            }
+        } while (opcao != 3);
+
+            
+        
     }
+
+    public void adicionarAluno(int num){
+        if (totalCadastrado < num) {
+            JTextField nomeField= new JTextField();
+            JTextField notaMfField = new JTextField();
+            JTextField notaPfField = new JTextField();
+            JTextField notaGfField = new JTextField();
+            JTextField notaHfField = new JTextField();
+            JTextField notaCfField = new JTextField();
+
+            Object[] mensagem = {
+                "Nome:", nomeField,
+                "Nota de Matemática:", notaMfField,
+                "Nota de Português:", notaPfField,
+                "Nota de Geografia:",notaGfField,
+                "Nota de História:", notaHfField,
+                "Nota de Ciência:", notaCfField 
+            };
+
+            int result = JOptionPane.showConfirmDialog(null, mensagem, 
+            "Cadastrar Aluno", JOptionPane.OK_CANCEL_OPTION);
+
+            if (result == JOptionPane.OK_OPTION) {
+                String nome = nomeField.getText();
+                float notaM = Float.parseFloat(notaMfField.getText());
+                float notaP = Float.parseFloat(notaPfField.getText());
+                float notaG = Float.parseFloat(notaGfField.getText());
+                float notaH = Float.parseFloat(notaHfField.getText());
+                float notaC = Float.parseFloat(notaCfField.getText());
+                
+                p.push(new Alunos(nome, notaM, notaP, notaG, notaH, notaC));
+                totalCadastrado++;
+                JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!");
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Agenda lotada!");
+        }
+    }
+
+    public void exibirAlunos(){
+        //exibir nome, notas, média e resusltado
+    }
+
 
     public static void main(String[] args) throws Exception {
         new App();
     }
 
-    public void simular() {
-        //para efetuar teste rápidos, criamos uma pilha com dados fixos:
-        p = new pilha(15);
-        p.push(new Alunos("Mari", 8, 8, 8, 8, 8));
-        p.push(new Alunos("Roberto", 6, 3, 7, 8, 10));
-        p.push(new Alunos("Clovis", 3, 2, 1, 4, 8));
-
-    }   
 }

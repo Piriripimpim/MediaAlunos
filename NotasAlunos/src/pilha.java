@@ -18,16 +18,19 @@ public class pilha implements TAD_pilha {
     }
 
     //Método que verifica se a Pilha está Vazia
+    @Override
     public boolean isEmpty() {
         return (topo == -1);
     }
 
     //Método que verifica se a Pilha está cheia
+     @Override
     public boolean isFull() {
         return (topo == MAX - 1);
     }
 
     //Método para inserir um valor na Pilha
+    @Override
     public Object push(Object x) {
         if (!isFull()) {
             alunos[++topo] = x;
@@ -38,6 +41,7 @@ public class pilha implements TAD_pilha {
     }
 
     //Método para retornar o topo da Pilha e removê-lo
+    @Override
     public Object pop() {
         if (!isEmpty()) {
             return alunos[topo--];
@@ -47,6 +51,7 @@ public class pilha implements TAD_pilha {
     }
 
     //Método que retorna o topo da pilha sem removê-lo
+    @Override
     public Object top() {
         if (!isEmpty()) {
             return alunos[topo];
@@ -56,6 +61,7 @@ public class pilha implements TAD_pilha {
     }
 
     //Método para retornar o conteúdo da Pilha
+    @Override
     public String toString() {
         if (!isEmpty()) {
             String msg = "";

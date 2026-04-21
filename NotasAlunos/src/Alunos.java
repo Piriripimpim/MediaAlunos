@@ -99,6 +99,7 @@ public class Alunos {
    //        + "\n -> Media: " + getMedia())
    //        + "\n -> Situação: " + getSituação() + "\n";
    //}
+    @Override
    public String toString()  {
        return("Nome: " + getNome() + ", Nota Matemática: " + getNotaM()
        	    + ", Nota Português: " + getNotaP()
