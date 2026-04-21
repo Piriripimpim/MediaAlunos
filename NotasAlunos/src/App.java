@@ -1,4 +1,6 @@
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 
@@ -79,6 +81,28 @@ public class App {
 
     public void exibirAlunos(){
         //exibir nome, notas, média e resusltado
+        String[] colunas = {"Nome", "Matemática", "Português", "Geografia", "História", "Ciência", "Média", "Resultado"};
+        Object[][] dados = new Object[totalCadastrado][8];
+
+        
+        for (int i = 0; i < totalCadastrado; i++) {
+            Alunos a = (Alunos) p.get(i);
+            dados[i][0] = a.getNome();
+            dados[i][1] = a.getNotaM();
+            dados[i][2] = a.getNotaP();
+            dados[i][3] = a.getNotaG();
+            dados[i][4] = a.getNotaH();
+            dados[i][5] = a.getNotaC();
+            dados[i][6] = String.format("%.2f",a.getMedia());
+            dados[i][7] = a.getSituação();
+        }
+        //Tabela com os dados.
+
+        JTable tabela = new JTable(dados, colunas);
+        //colocar dentro de um JScrollPane para aparecer no cabeçalho
+        JScrollPane scroll = new JScrollPane(tabela);
+        //Exibir tudo no JOptionPane
+        JOptionPane.showMessageDialog(null, scroll, "Lista de Alunos", JOptionPane.PLAIN_MESSAGE);
     }
 
 

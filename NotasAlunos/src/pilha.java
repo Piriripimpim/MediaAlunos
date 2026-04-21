@@ -79,20 +79,8 @@ public class pilha implements TAD_pilha {
 //////////////////////////////////////////////////////
 
 	//Método para exibir o conteúdo da Pilha
-	public void print()
+	public Object get(int i)
 	{
-		if (!isEmpty())
-		{
-			String msg = "";
-			for(int i=0; i<=topo; i++)
-			{
-				msg += alunos[i].toString() + "\n";
-			}
-			System.out.println("P: [ "+msg+" ]");
-		}
-		else
-		{
-			System.out.println("Pilha Vazia!!");
-		}
+        return alunos[i];
 	}
 }
