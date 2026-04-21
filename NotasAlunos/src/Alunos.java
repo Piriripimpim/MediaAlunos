@@ -5,19 +5,18 @@ public class Alunos {
 
     public Alunos(){}
 
-    public Alunos(String nome, float notaP, float notaM, float notaH, float notaG, float notaC){
+    public Alunos(String nome, float notaM, float notaP, float notaG, float notaH, float notaC){
         this.nome = nome;
-        this.notaP = notaP;
         this.notaM = notaM;
-        this.notaH = notaH;
+        this.notaP = notaP;
         this.notaG = notaG;
+        this.notaH = notaH;
         this.notaC = notaC;
-        this.media = media(notaP, notaM, notaH, notaG, notaC);
-        situacao(notaP, notaM, notaH, notaG, notaC, this.media);
+        this.media = media(notaM, notaP, notaG, notaH, notaC);
+        situacao(notaM, notaP, notaG, notaH, notaC, this.media);
     }
 
-
-    public float media(float notaP, float notaM, float notaH, float notaG, float notaC){
+    public float media(float notaM, float notaP, float notaG, float notaH, float notaC){
         float Cmedia = (notaC + notaG + notaH + notaP + notaM)/5;
         return Cmedia;
     }
@@ -41,7 +40,6 @@ public class Alunos {
         }
 
     }
-
 
     public String getNome() {
         return nome;
@@ -92,8 +90,17 @@ public class Alunos {
         this.situacao = situação;
     }
 
-    public String toString()  {
-       return("Nome: " +getNome()+ ", Nota Matemática: " + getNotaM()
+   //public String toString() {
+   //   return("Nome: " + getNome() + "\n -> Nota Matemática: " + getNotaM()
+   //   	    + "\n -> Nota Português: " + getNotaP()
+   //        + "\n -> Nota de Ciências: " + getNotaC()
+   //        + "\n -> Nota Geografia: " + getNotaG()
+   //        + "\n -> Nota História: " + getNotaH() + "\n"
+   //        + "\n -> Media: " + getMedia())
+   //        + "\n -> Situação: " + getSituação() + "\n";
+   //}
+   public String toString()  {
+       return("Nome: " + getNome() + ", Nota Matemática: " + getNotaM()
        	    + ", Nota Português: " + getNotaP()
             + ", Nota de Ciências: " + getNotaC()
             + ", Nota Geografia: " + getNotaG()

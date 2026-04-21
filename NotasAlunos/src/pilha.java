@@ -1,5 +1,5 @@
 public class pilha implements TAD_pilha {
-     private int topo;	//Topo da Pilha
+    private int topo;	//Topo da Pilha
     private int MAX;	//Tamanho da Pilha
     private Object alunos[];	//Elementos da Pilha (objeto genérico)
 
@@ -37,20 +37,6 @@ public class pilha implements TAD_pilha {
         }
     }
 
-    //Método para retornar o conteúdo da Pilha
-    public String toString() {
-        if (!isEmpty()) {
-            String msg = "";
-            for (int i = 0; i <= topo; i++) {
-                msg += "\n  " + alunos[i].toString();
-                //if(i != topo) msg += ", ";
-            }
-            return ("P: [ " + msg + "\n]");
-        } else {
-            return "Pilha Vazia!";
-        }
-    }
-
     //Método para retornar o topo da Pilha e removê-lo
     public Object pop() {
         if (!isEmpty()) {
@@ -69,16 +55,32 @@ public class pilha implements TAD_pilha {
         }
     }
 
+    //Método para retornar o conteúdo da Pilha
+    public String toString() {
+        if (!isEmpty()) {
+            String msg = "";
+            for (int i = 0; i <= topo; i++) {
+                msg += "\n  " + alunos[i].toString();
+                //if(i != topo) msg += ", ";
+            }
+            return ("P: [ " + msg + "\n]");
+            //return String.format("P: [ %s \n]", msg);
+        } else {
+            return "Pilha Vazia!";
+        }
+    }
+
 //////////////////////////////////////////////////////
+
 	//Método para exibir o conteúdo da Pilha
 	public void print()
 	{
-		if(!isEmpty())
+		if (!isEmpty())
 		{
 			String msg = "";
 			for(int i=0; i<=topo; i++)
 			{
-				msg += alunos[i].toString() + ", ";
+				msg += alunos[i].toString() + "\n";
 			}
 			System.out.println("P: [ "+msg+" ]");
 		}
