@@ -86,7 +86,8 @@ public class App {
 
         
         for (int i = 0; i < totalCadastrado; i++) {
-            Alunos a = (Alunos) p.get(i);
+            //Alunos a = (Alunos) p.get(i);
+            Alunos a = (Alunos) p.pop();
             dados[i][0] = a.getNome();
             dados[i][1] = a.getNotaM();
             dados[i][2] = a.getNotaP();
